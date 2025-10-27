@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srishti Singh - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            background: linear-gradient(135deg, #1a0033 0%, #2d0a4e 50%, #4a1472 100%);
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Falling Flowers Animation */
+        .flower {
+            position: fixed;
+            top: -50px;
+            font-size: 25px;
+            animation: fall linear infinite;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% {
+                opacity: 0;
+                transform: translateY(0) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* Sparkle Effect */
+        .sparkle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: gold;
+            border-radius: 50%;
+            animation: sparkle-anim 2s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 2;
+            box-shadow: 0 0 10px gold, 0 0 20px gold;
+        }
+
+        @keyframes sparkle-anim {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 40px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 255, 255, 0.95));
+            border-radius: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 30px 80px rgba(255, 215, 0, 0.4), inset 0 0 50px rgba(255, 215, 0, 0.1);
+            animation: fadeInDown 1.5s ease;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .crown {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px gold);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.6), 0 0 100px rgba(255, 215, 0, 0.3);
+            animation: pulse 3s infinite, rotate-glow 8s linear infinite;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        @keyframes rotate-glow {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        h1 {
+            font-size: 4em;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        .tagline {
+            font-size: 1.5em;
+            color: #4a1472;
+            margin-bottom: 30px;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #2d0a4e;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+            font-size: 1.1em;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 50px rgba(255, 215, 0, 0.8);
+        }
+
+        .section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 255, 255, 0.95));
+            border-radius: 30px;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.3), inset 0 0 30px rgba(255, 215, 0, 0.05);
+            animation: fadeInUp 1.5s ease;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-size: 2.8em;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-weight: 700;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #2d0a4e 0%, #4a1472 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(74, 20, 114, 0.4);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.5);
+            border-color: gold;
+        }
+
+        .skill-icon {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+        }
+
+        .skill-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: gold;
+        }
+
+        .vision-text {
+            font-size: 1.3em;
+            line-height: 2;
+            color: #2d0a4e;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 255, 255, 0.3));
+            border-radius: 20px;
+            border-left: 6px solid gold;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+            font-weight: 500;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #2d0a4e;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-card:hover {
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 15px 50px rgba(255, 215, 0, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: gold;
+            font-size: 1.3em;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .tagline {
+                font-size: 1.2em;
+            }
+            
+            h2 {
+                font-size: 2em;
+            }
+
+            .section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="crown">👑</div>
+            <div class="profile-section">
+                <div class="profile-img">✨</div>
+                <h1>Srishti Singh</h1>
+            </div>
+            <p class="tagline">Aspiring Entrepreneur | Business Enthusiast | Future Leader</p>
+            <a href="https://instagram.com" target="_blank" class="social-link">
+                <span>📸</span> Follow My Journey on Instagram
+            </a>
+        </header>
+
+        <div class="section">
+            <h2>💎 About Me</h2>
+            <p class="vision-text">
+                I'm Srishti Singh, a passionate and ambitious individual with dreams of conquering the business world. 
+                My journey is driven by innovation, leadership, and the desire to create meaningful impact. 
+                I believe in the power of dedication, continuous learning, and transforming visions into reality. 
+                Every challenge is an opportunity, and every step forward brings me closer to becoming the 
+                entrepreneur and business expert I'm destined to be.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>🌟 My Skills & Passions</h2>
+            <div class="about-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">💡</div>
+                    <div class="skill-title">Innovation</div>
+                    <p>Creative thinking and breakthrough solutions</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📊</div>
+                    <div class="skill-title">Business Strategy</div>
+                    <p>Strategic planning and market mastery</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">👑</div>
+                    <div class="skill-title">Leadership</div>
+                    <p>Inspiring teams and driving excellence</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🚀</div>
+                    <div class="skill-title">Growth Mindset</div>
+                    <p>Constantly evolving and achieving more</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>✨ My Vision</h2>
+            <p class="vision-text">
+                I envision a future where I lead transformative ventures that create lasting value and positive change. 
+                My passion for business extends beyond profits—it's about building legacies, empowering communities, 
+                and inspiring the next generation of leaders. With unwavering determination and strategic thinking, 
+                I am crafting my path to entrepreneurial excellence and business leadership.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>💌 Let's Connect</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div style="font-size: 3em; margin-bottom: 15px;">💼</div>
+                    <h3>Collaboration</h3>
+                    <p>Open to exciting opportunities</p>
+                </div>
+                <div class="contact-card">
+                    <div style="font-size: 3em; margin-bottom: 15px;">🌟</div>
+                    <h3>Mentorship</h3>
+                    <p>Always eager to learn</p>
+                </div>
+                <div class="contact-card">
+                    <div style="font-size: 3em; margin-bottom: 15px;">🤝</div>
+                    <h3>Networking</h3>
+                    <p>Building meaningful connections</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>✨ Dream Royally • Achieve Brilliantly • Shine Eternally ✨</p>
+        </footer>
+    </div>
+
+    <script>
+        // Create falling flowers
+        const flowers = ['🌸', '🌺', '🌼', '🌻', '🌷', '🏵️', '💐', '🌹'];
+        
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+            flower.style.left = Math.random() * 100 + '%';
+            flower.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            flower.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(flower);
+
+            setTimeout(() => {
+                flower.remove();
+            }, 8000);
+        }
+
+        // Create flowers periodically
+        setInterval(createFlower, 300);
+
+        // Create sparkles
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(sparkle);
+
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }
+
+        // Create sparkles periodically
+        setInterval(createSparkle, 200);
+
+        // Initial burst
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createFlower, i * 200);
+        }
+    </script>
+</body>
+</html>
